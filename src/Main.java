@@ -64,14 +64,16 @@ public class Main {
                             //service.viewEmployee();
                             break;
                         case 3:
-                            service.updateEmployee();
+                           // service.updateEmployee();
+                            dbEmployeeService.update();
                             break;
                         case 4:
                             service.deleteEmployee();
                             break;
                         case 5:
                             System.out.println("View all employees");
-                            service.viewAllEmployees();
+                            dbEmployeeService.viewAll();
+                            //service.viewAllEmployees();
                             break;
                     }
                 } while (choice != 0);
