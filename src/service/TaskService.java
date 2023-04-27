@@ -13,10 +13,10 @@ public class TaskService {
 
     List<Task> tasks = new ArrayList<Task>();
 
-    Task task1 = new Task("chemistry", "make a new element", "assignee", "03-05-2023");
-    Task task2 = new Task("biology", "make a  ..", "assignee", "10-05-2023");
-    Task task3 = new Task("maths", "make a new exercise", "assignee", "15-05-2023");
-    Task task4 = new Task("english", "make a new sentence", "assignee", "12-05-2023");
+    Task task1 = new Task("chemistry", "make a new element",  "03-05-2023");
+    Task task2 = new Task("biology", "make a  ..",  "10-05-2023");
+    Task task3 = new Task("maths", "make a new exercise",  "15-05-2023");
+    Task task4 = new Task("english", "make a new sentence",  "12-05-2023");
 
     public TaskService() {
         tasks.add(task1);
@@ -36,7 +36,7 @@ public class TaskService {
         System.out.print("Enter Due Date: ");
         String dueDate = scan.next();
 
-        tasks.add(new Task(title, description, assignee, dueDate));
+        tasks.add(new Task(title, description,  dueDate));
         System.out.println("Task successfully created!");
     }
 
@@ -92,7 +92,6 @@ public class TaskService {
                 String newDueDate = scan.next();
                 task.setTitle(newTitle);
                 task.setDescription(newDescr);
-                task.setAssignee(newAssignee);
                 task.setDueDate(newDueDate);
             } else {
                 System.out.println("No record found!");

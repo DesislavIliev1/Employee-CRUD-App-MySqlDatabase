@@ -6,14 +6,12 @@ import java.util.Set;
 public class Task {
     private String title;
     private String description;
-    private String assignee;
     private String dueDate;
     private Set<Employee> employees = new HashSet<Employee>();
 
-    public Task(String title, String description, String assignee, String dueDate) {
+    public Task(String title, String description, String dueDate) {
         this.title = title;
         this.description = description;
-        this.assignee = assignee;
         this.dueDate = dueDate;
     }
 
@@ -33,13 +31,7 @@ public class Task {
         this.description = description;
     }
 
-    public String getAssignee() {
-        return assignee;
-    }
 
-    public void setAssignee(String assignee) {
-        this.assignee = assignee;
-    }
 
     public String getDueDate() {
         return dueDate;
@@ -52,7 +44,7 @@ public class Task {
     @Override
     public String toString() {
         return  title + '\'' + description + '\'' +
-                assignee + '\'' +  dueDate ;
+                 '\'' +  dueDate ;
     }
 
 }

@@ -1,7 +1,5 @@
 package service;
-
 import entity.Employee;
-
 import java.sql.*;
 import java.util.Scanner;
 
@@ -9,16 +7,16 @@ public class DbEmployeeService implements  CRUD{
     Scanner scan = new Scanner(System.in);
     public static  Connection connection;
 
+
+// Creating method that connect the app with mysql database.
     public void DBconnection()throws SQLException{
         connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/employeeapp", "root", "des20sislav10");
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery("select * from employees");
-
-      //  while (resultSet.next()) {
-     //       System.out.println(resultSet.getString("fullName"));
-     //   }
     }
 
+
+    // Method that create object in the MySql query.
     @Override
     public void create() {
         try {
@@ -43,10 +41,10 @@ public class DbEmployeeService implements  CRUD{
             }
         }catch (Exception e){
             e.printStackTrace();
+        }
     }
 
-    }
-
+ //   Method that display current object from the database.
     @Override
     public void viewObj() {
 
@@ -70,15 +68,29 @@ public class DbEmployeeService implements  CRUD{
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
     }
 
+
+    // Method that delete current object from the database.
     @Override
     public void delete() {
 
+        try{
+
+            System.out.println("Enter employee id to delete: ");
+            int number = scan.nextInt();
+            String sql = "delete from employees where idemployees = "+number;
+            Statement statement = connection.createStatement();
+            int rows = statement.executeUpdate(sql);
+            if(rows > 0){
+                System.out.println("Record deleted successfully");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
+    // Method that display all the data from the query.
     @Override
     public void viewAll() {
 
@@ -102,6 +114,8 @@ public class DbEmployeeService implements  CRUD{
 
     }
 
+
+    // Method that update current object from the query.
     @Override
     public void update() {
         try {
@@ -178,11 +192,7 @@ public class DbEmployeeService implements  CRUD{
                     if(rows5 > 0){
                         System.out.println("Record updated successfully");
                     }
-
             }
-
-
-
         }catch (Exception e){
             e.printStackTrace();
         }

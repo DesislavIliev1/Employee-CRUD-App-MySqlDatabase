@@ -1,4 +1,5 @@
 import service.DbEmployeeService;
+import service.DbTaskService;
 import service.EmployeeService;
 import service.TaskService;
 
@@ -12,9 +13,12 @@ public class Main {
         test tes = new test();
         EmployeeService service = new EmployeeService();
         TaskService taskService = new TaskService();
+        DbTaskService dbTaskService = new DbTaskService();
         DbEmployeeService dbEmployeeService = new DbEmployeeService();
         Scanner scan = new Scanner(System.in);
         dbEmployeeService.DBconnection();
+        dbTaskService.DBconnection();
+
 
        // tes.DBconnection();
        /* try {
@@ -68,7 +72,8 @@ public class Main {
                             dbEmployeeService.update();
                             break;
                         case 4:
-                            service.deleteEmployee();
+                            dbEmployeeService.delete();
+                           // service.deleteEmployee();
                             break;
                         case 5:
                             System.out.println("View all employees");
@@ -93,20 +98,24 @@ public class Main {
                     choice = scan.nextInt();
                     switch (choice) {
                         case 1:
-                            taskService.addTask();
+                            dbTaskService.create();
+                            //taskService.addTask();
                             break;
                         case 2:
-                            taskService.viewTask();
+                            dbTaskService.viewObj();
+                            //taskService.viewTask();
                             break;
                         case 3:
                             taskService.updateTask();
                             break;
                         case 4:
-                            taskService.deleteTask();
+                            dbTaskService.delete();
+                            //taskService.deleteTask();
                             break;
                         case 5:
                             System.out.println("View all employees");
-                            taskService.viewAllTasks();
+                            dbTaskService.viewAll();
+                            //taskService.viewAllTasks();
                             break;
                     }
                 } while (choice != 0);
