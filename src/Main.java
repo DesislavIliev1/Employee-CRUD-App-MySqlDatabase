@@ -106,7 +106,8 @@ public class Main {
                             //taskService.viewTask();
                             break;
                         case 3:
-                            taskService.updateTask();
+                            dbTaskService.update();
+                            //taskService.updateTask();
                             break;
                         case 4:
                             dbTaskService.delete();

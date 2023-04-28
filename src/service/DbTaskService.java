@@ -107,6 +107,71 @@ public class DbTaskService implements  CRUD{
 
     @Override
     public void update() {
+        try {
+            System.out.println("Enter task id to update: ");
+            int id = scan.nextInt();
+            String sql = "Select * from tasks where idTask =" + id;
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            System.out.println("What record do you want to update? ");
+            System.out.println("1. Title");
+            System.out.println("2. Description");
+            System.out.println("3. Due date");
+            System.out.println("4. Employee id");
+
+            int choice = scan.nextInt();
+            String sqlQuery = "update tasks set ";
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter new Title: ");
+                    String newTitle = scan.next();
+                    sqlQuery = sqlQuery + "title = ? where idTask = " + id;
+                    PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+                    preparedStatement.setString(1, newTitle);
+                    int rows = preparedStatement.executeUpdate();
+                    if (rows > 0) {
+                        System.out.println("Record updated successfully");
+                    }
+                    break;
+                case 2:
+                    System.out.println("Enter new Description: ");
+                    String newDesc = scan.next();
+                    sqlQuery = sqlQuery + "description = ? where idTask = " + id;
+                    PreparedStatement preparedStatement2 = connection.prepareStatement(sqlQuery);
+                    preparedStatement2.setString(1, newDesc);
+                    int rows2 = preparedStatement2.executeUpdate();
+                    if (rows2 > 0) {
+                        System.out.println("Record updated successfully");
+                    }
+                    break;
+                case 3:
+                    System.out.println("Enter new Due date: ");
+                    String newDueDate = scan.next();
+                    sqlQuery = sqlQuery + "due_date = ? where idTask = " + id;
+                    PreparedStatement preparedStatement3 = connection.prepareStatement(sqlQuery);
+                    preparedStatement3.setString(1, newDueDate);
+                    int rows3 = preparedStatement3.executeUpdate();
+                    if (rows3 > 0) {
+                        System.out.println("Record updated successfully");
+                    }
+                    break;
+                case 4:
+                    System.out.println("Enter new Employee id: ");
+                    int newEmpId = scan.nextInt();
+                    sqlQuery = sqlQuery + "employee_id = ? where idTask = " + id;
+                    PreparedStatement preparedStatement4 = connection.prepareStatement(sqlQuery);
+                    preparedStatement4.setInt(1, newEmpId);
+                    int rows4 = preparedStatement4.executeUpdate();
+                    if (rows4 > 0) {
+                        System.out.println("Record updated successfully");
+                    }
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 }
