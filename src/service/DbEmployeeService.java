@@ -197,6 +197,26 @@ public class DbEmployeeService implements  CRUD{
             e.printStackTrace();
         }
 
+
+
+    }
+
+    public void topEmployees(){
+        try {
+            String sql = "select * from employees join tasks on idemployees = employee_id ";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+
+            while(resultSet.next()){
+               String name = resultSet.getString("fullName");
+                System.out.println(name);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
     }
 
 

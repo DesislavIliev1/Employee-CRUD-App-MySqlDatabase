@@ -10,7 +10,7 @@ public class Main {
 
 
     public static void main(String[] args) throws SQLException {
-        test tes = new test();
+
         EmployeeService service = new EmployeeService();
         TaskService taskService = new TaskService();
         DbTaskService dbTaskService = new DbTaskService();
@@ -80,6 +80,8 @@ public class Main {
                             dbEmployeeService.viewAll();
                             //service.viewAllEmployees();
                             break;
+                        case 6:
+                            dbEmployeeService.topEmployees();
                     }
                 } while (choice != 0);
                 break;
